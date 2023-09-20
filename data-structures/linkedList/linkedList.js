@@ -35,7 +35,30 @@ class LinkedList {
     this.length++;
     return this; //means we return all
   }
+
+  pop() {
+    //if there are 0 item in our linked list
+    if (!this.head) {
+      return undefined;
+    }
+    let temp = this.head;
+    let pre = this.head;
+    while (temp.next) {
+      pre = temp;
+      temp = temp.next;
+    }
+    this.tail = pre;
+    this.tail.next = null;
+    this.length--;
+    //edge case if we have only one item in linked list
+    if (this.length === 0) {
+      this.head = null;
+      this.tail = null;
+    }
+    return temp;
+  }
 }
 
 let myLinkedList = new LinkedList(4);
 myLinkedList.push(7);
+myLinkedList.pop();

@@ -23,10 +23,22 @@ class Stack {
     this.length++;
     return this;
   }
+
+  pop() {
+    if (this.length === 0) return undefined;
+
+    let temp = this.top;
+    this.top = this.top.next;
+    temp.next = null;
+
+    this.length--;
+    return temp;
+  }
 }
 
 let myStack = new Stack(7);
 myStack.push(23);
 myStack.push(3);
 myStack.push(11);
+myStack.pop();
 console.log(myStack);
